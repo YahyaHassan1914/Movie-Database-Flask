@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="movies">
+    {% if movies %}
+        <ul>
+            {% for movie in movies %}
+            <li>
+                <a href="{{ url_for('movie_detail', id=movie.imdbID) }}">
+                    <img src="{{ movie.Poster }}" alt="{{ movie.Title }}">
+                    <p>{{ movie.Title }}</p>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movies found.</p>
+    {% endif %}
+</div>
+{% endblock %}

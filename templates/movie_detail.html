@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="movie-detail">
+    <h2>{{ movie.Title }}</h2>
+    <img src="{{ movie.Poster }}" alt="{{ movie.Title }}">
+    <p>Year: {{ movie.Year }}</p>
+    <p>Genre: {{ movie.Genre }}</p>
+    <p>Plot: {{ movie.Plot }}</p>
+    <form action="{{ url_for('rate_movie') }}" method="post">
+        <input type="hidden" name="movie_id" value="{{ movie.imdbID }}">
+        <label for="rating">Rate this movie:</label>
+        <select name="rating" id="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
